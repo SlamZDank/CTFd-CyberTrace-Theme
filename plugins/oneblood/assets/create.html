@@ -1,0 +1,16 @@
+{% extends "admin/challenges/create.html" %}
+
+{% block header %}
+<div class="alert alert-secondary" role="alert">
+	One Blood challenges are only redeemable by 1 person / team
+</div>
+{% endblock %}
+
+
+{% block value %}
+{{ super() }}
+{% endblock %}
+
+{% block type %}
+<input type="hidden" value="oneblood" name="type" id="chaltype">
+{% endblock %}
