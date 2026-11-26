@@ -2,4 +2,48 @@
 :root {--theme-color: #000000;}
 .navbar{background-color: var(--theme-color) !important;}
 .jumbotron{background-color: var(--theme-color) !important;}
+  
+  html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main,
+.jumbotron + .container,
+body > .container {
+    flex: 1 0 auto;
+}
+  
+  .jumbotron {
+    position: relative;
+    overflow: hidden;
+}
+
+.jumbotron::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 20%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.3) 80%,
+        transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+footer {
+    margin-top: auto;
+    flex-shrink: 0;
+    width: 100%;
+}
 </style>
