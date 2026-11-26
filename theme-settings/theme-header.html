@@ -12,7 +12,26 @@ body {
     display: flex;
     flex-direction: column;
 }
+  
+  /* Shimmer on the navbar only when there is no jumbotron */
+body:not(:has(.jumbotron)) .navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 20%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.3) 80%,
+        transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
 
+/* CTFd page content grows to fill the free space */
 main,
 .jumbotron + .container,
 body > .container {
@@ -27,7 +46,7 @@ body > .container {
 .jumbotron::after {
     content: '';
     position: absolute;
-    bottom: 0; 
+    bottom: 0;          /* use top: 0 for a line at the top instead */
     left: 0;
     right: 0;
     height: 1px;
@@ -42,7 +61,7 @@ body > .container {
 }
 
 footer {
-    margin-top: auto;
+    margin-top: auto;   /* pushes it to the bottom */
     flex-shrink: 0;
     width: 100%;
 }
